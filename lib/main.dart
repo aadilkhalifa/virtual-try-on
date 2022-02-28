@@ -46,7 +46,15 @@ class _CameraAppState extends State<CameraApp> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Virtual try on', controller: controller),
+      // home: MyHomePage(title: 'Virtual try on', controller: controller),
+      initialRoute: '/home',
+      routes: {
+        // When navigating to the "/" route, build the FirstScreen widget.
+        '/home': (context) =>
+            MyHomePage(title: 'Virtual try on', controller: controller),
+        // When navigating to the "/second" route, build the SecondScreen widget.
+        // '/second': (context) => const SecondScreen(),
+      },
     );
   }
 }

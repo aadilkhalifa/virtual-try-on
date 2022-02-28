@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:camera/camera.dart';
+import 'package:virtual_try_on/submitPage.dart';
 
 import 'formPage.dart';
 
@@ -25,7 +26,7 @@ class VirtualTryOnPage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => FormPage()),
+                  MaterialPageRoute(builder: (context) => SubmitPage()),
                 );
               },
             ),
