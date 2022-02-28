@@ -44,7 +44,48 @@ class _CameraAppState extends State<CameraApp> {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        // primarySwatch: Colors.grey,
+        // fontFamily: 'Poppins',
+        fontFamily: 'Inter',
+        primaryColor: Color(0xFF001E1D),
+        canvasColor: Color(0xFFE9E4E5),
+        appBarTheme: AppBarTheme(
+          backgroundColor: Color(0xFF001E1D),
+        ),
+        buttonTheme: ButtonThemeData(
+          buttonColor: Color(0xFF001E1D),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            backgroundColor:
+                MaterialStateProperty.all<Color>(Color(0xFF001E1D)),
+            fixedSize: MaterialStateProperty.all<Size>(Size(200, 70)),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50))),
+          ),
+        ),
+        outlinedButtonTheme: OutlinedButtonThemeData(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+            side: MaterialStateProperty.all<BorderSide>(BorderSide(
+              width: 1,
+              // color: Color(0xFF001E1D),
+              color: Colors.transparent,
+            )),
+            foregroundColor:
+                MaterialStateProperty.all<Color>(Color(0xFF001E1D)),
+            fixedSize: MaterialStateProperty.all<Size>(Size(200, 70)),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(50),
+              ),
+            ),
+          ),
+        ),
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          secondary: Color(0xFFD96566),
+        ),
       ),
       // home: MyHomePage(title: 'Virtual try on', controller: controller),
       initialRoute: '/home',
@@ -81,35 +122,82 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ElevatedButton(
-              // style: ElevatedButton.styleFrom(
-              //   minimumSize: Size.fromHeight(40),
-              // ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          CheckSizePage(controller: controller)),
-                );
-              },
-              child: const Text("Check size"),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          VirtualTryOnPage(controller: controller)),
-                );
-              },
-              child: const Text("Virtual try on"),
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Expanded(
+                child: Center(
+                  child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: RichText(
+                          text: TextSpan(
+                        style: TextStyle(
+                          fontSize: 60,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black,
+                        ),
+                        children: <TextSpan>[
+                          TextSpan(text: 'A new and improved '),
+                          TextSpan(
+                            text: 'shopping ',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context).colorScheme.secondary,
+                            ),
+                          ),
+                          TextSpan(text: 'experience.'),
+                        ],
+                      ))
+                      // child: Text(
+                      //   'A new and improved shopping experience.',
+                      //   style: TextStyle(
+                      //     fontSize: 60,
+                      //     fontWeight: FontWeight.w400,
+                      //   ),
+                      // ),
+                      ),
+                ),
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  ElevatedButton(
+                    // style: ElevatedButton.styleFrom(
+                    //   minimumSize: Size.fromHeight(40),
+                    // ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                CheckSizePage(controller: controller)),
+                      );
+                    },
+                    child: const Text("Check size"),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        // primary: Theme.of(context).primaryColor,
+                        ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                VirtualTryOnPage(controller: controller)),
+                      );
+                    },
+                    child: const Text("Shop now"),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -26,7 +26,8 @@ class VirtualTryOnPage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SubmitPage()),
+                  MaterialPageRoute(
+                      builder: (context) => SubmitPage(controller: controller)),
                 );
               },
             ),

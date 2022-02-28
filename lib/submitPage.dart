@@ -1,16 +1,31 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:virtual_try_on/checkSizePage.dart';
 import 'package:virtual_try_on/formPage.dart';
 import 'package:virtual_try_on/thankYouPage.dart';
 
 class SubmitPage extends StatelessWidget {
-  const SubmitPage({Key? key}) : super(key: key);
+  CameraController? controller;
+  SubmitPage({Key? key, required this.controller}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Submit page'),
-      ),
+      appBar: AppBar(title: Text('Submit page'), actions: [
+        TextButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => CheckSizePage(controller: controller)),
+            );
+          },
+          child: Text('Check size'),
+          style: ButtonStyle(
+            foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+          ),
+        )
+      ]),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(

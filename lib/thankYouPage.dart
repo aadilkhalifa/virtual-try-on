@@ -16,41 +16,77 @@ class _ThankYouPageState extends State<ThankYouPage> {
       return Scaffold(
         appBar: AppBar(title: Text('Thank you')),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text('Thank you for shopping with us.'),
-              OutlinedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => FormPage()),
-                  );
-                },
-                child: Text('Take a survey'),
-              )
-            ],
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Center(
+                  child: Text(
+                    'Thank you for shopping with us.',
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 16,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => FormPage()),
+                    );
+                  },
+                  child: Text('Take a survey'),
+                ),
+                SizedBox(height: 8.0),
+                OutlinedButton(
+                  onPressed: () {
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                        '/home', (Route<dynamic> route) => false);
+                  },
+                  child: Text('Back to home page'),
+                )
+              ],
+            ),
           ),
         ),
       );
     } else {
       return Scaffold(
         appBar: AppBar(title: Text('Thank you')),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text('Thank you for taking the survey.'),
-              OutlinedButton(
-                onPressed: () {
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                      '/home', (Route<dynamic> route) => false);
-                },
-                child: Text('Back to home page'),
-              )
-            ],
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Center(
+                  child: Text(
+                    'Thank you for taking the survey.',
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 16,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                        '/home', (Route<dynamic> route) => false);
+                  },
+                  child: Text('Back to home page'),
+                )
+              ],
+            ),
           ),
         ),
       );

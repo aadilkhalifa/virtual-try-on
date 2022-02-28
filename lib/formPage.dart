@@ -40,6 +40,9 @@ class _FormPageState extends State<FormPage> {
                         sliderValue1 = n;
                         setState(() {});
                       },
+                      activeColor: Theme.of(context).colorScheme.secondary,
+                      inactiveColor:
+                          Theme.of(context).colorScheme.secondary.withAlpha(50),
                     ),
                     SizedBox(height: 8.0),
                     Text(
@@ -51,6 +54,9 @@ class _FormPageState extends State<FormPage> {
                         sliderValue2 = n;
                         setState(() {});
                       },
+                      activeColor: Theme.of(context).colorScheme.secondary,
+                      inactiveColor:
+                          Theme.of(context).colorScheme.secondary.withAlpha(50),
                     ),
                     SizedBox(height: 8.0),
                     Text('How likely are you to recommend this to someone?'),
@@ -61,6 +67,9 @@ class _FormPageState extends State<FormPage> {
                         sliderValue3 = n;
                         setState(() {});
                       },
+                      activeColor: Theme.of(context).colorScheme.secondary,
+                      inactiveColor:
+                          Theme.of(context).colorScheme.secondary.withAlpha(50),
                     ),
                     SizedBox(height: 8.0),
                     Text(
@@ -74,6 +83,9 @@ class _FormPageState extends State<FormPage> {
                         sliderValue4 = n;
                         setState(() {});
                       },
+                      activeColor: Theme.of(context).colorScheme.secondary,
+                      inactiveColor:
+                          Theme.of(context).colorScheme.secondary.withAlpha(50),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
