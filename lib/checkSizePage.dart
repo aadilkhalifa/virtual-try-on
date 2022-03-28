@@ -8,25 +8,62 @@ class CheckSizePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Future<void> _showMyDialog() async {
+      return showDialog<void>(
+        context: context,
+        barrierDismissible: false, // user must tap button!
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Guide to using the module'),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: const <Widget>[
+                  Text('Step 1:',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text('lorem ipsum dolor sit amet, consectetur adipiscing'),
+                  SizedBox(height: 8.0),
+                  Text('Step 2:',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text('lorem ipsum dolor sit amet, consectetur adipiscing'),
+                  SizedBox(height: 8.0),
+                  Text('Step 3:',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text('lorem ipsum dolor sit amet, consectetur adipiscing'),
+                ],
+              ),
+            ),
+            actions: <Widget>[
+              TextButton(
+                child: const Text('Back'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Virtual try on'),
-        // actions: [
-        //   Center(
-        //     child: TextButton(
-        //       child: Text(
-        //         'Proceed',
-        //         style: TextStyle(
-        //           color: Colors.white,
-        //         ),
-        //       ),
-        //       onPressed: () {},
-        //     ),
-        //   ),
-        //   SizedBox(
-        //     width: 20,
-        //   )
-        // ],
+        title: Text('Get your foot size'),
+        actions: [
+          Center(
+            child: TextButton(
+              child: Text(
+                'Help',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              onPressed: _showMyDialog,
+            ),
+          ),
+          SizedBox(
+            width: 20,
+          )
+        ],
       ),
       body: Center(
         child: Stack(children: [
