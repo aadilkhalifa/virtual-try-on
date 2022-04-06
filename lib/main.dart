@@ -25,7 +25,11 @@ class _CameraAppState extends State<CameraApp> {
   @override
   void initState() {
     super.initState();
-    controller = CameraController(cameras![0], ResolutionPreset.max);
+    controller = CameraController(
+      cameras![0],
+      ResolutionPreset.max,
+    );
+    controller!.setFlashMode(FlashMode.off);
     initializeControllerFuture = controller!.initialize();
     initializeControllerFuture.then((_) {
       if (!mounted) {

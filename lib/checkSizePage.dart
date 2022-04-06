@@ -6,6 +6,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:camera/camera.dart';
+import 'package:http_parser/http_parser.dart';
 
 class CheckSizePage extends StatelessWidget {
   CameraController? controller;
@@ -184,12 +185,32 @@ class _DisplaySizeScreenState extends State<DisplaySizeScreen> {
   late String imagePath;
   bool loading = true;
   String res = '';
+  double size_cm = -1;
   _DisplaySizeScreenState({required this.imagePath});
 
   Future<String> getEncoding() async {
     final bytes = File(imagePath).readAsBytesSync();
     String img64 = base64Encode(bytes);
     return img64;
+  }
+
+  send_request() async {
+    MultipartRequest request = MultipartRequest(
+        'POST', Uri.parse('http://aadilkhalifa.pythonanywhere.com/image'));
+
+    request.files.add(
+      await MultipartFile.fromPath(
+        'img',
+        imagePath,
+        contentType: MediaType('application', 'jpeg'),
+      ),
+    );
+
+    StreamedResponse r = await request.send();
+    print(r.statusCode);
+    size_cm = double.parse(await r.stream.transform(utf8.decoder).join());
+    print(size_cm);
+    setState(() {});
   }
 
   @override
@@ -201,30 +222,30 @@ class _DisplaySizeScreenState extends State<DisplaySizeScreen> {
     // print(imagePath);
     if (loading) {
       getEncoding().then((img) async {
-        print(img);
-        try {
-          // Map<String, String> body = {"name": "morpheus", "job": "leader"};
-          Map<String, String> body = {"image": test};
+        // print(img);
+        // try {
+        //   // Map<String, String> body = {"name": "morpheus", "job": "leader"};
+        //   Map<String, String> body = {"image": test};
 
-          Response r = await post(
-            // Uri.parse('https://reqres.in/api/users'),
-            Uri.parse('http://aadilkhalifa.pythonanywhere.com/'),
-            body: body,
-          );
-          res = r.body.toString();
-          setState(() {});
-          print(r.body.toString());
-        } catch (e) {
-          print(e);
-        }
+        //   Response r = await post(
+        //     // Uri.parse('https://reqres.in/api/users'),
+        //     Uri.parse('http://aadilkhalifa.pythonanywhere.com/'),
+        //     body: body,
+        //   );
+        //   res = r.body.toString();
+        //   setState(() {});
+        //   print(r.body.toString());
+        // } catch (e) {
+        //   print(e);
+        // }
+
+        await send_request();
 
         // print(img);
         loading = false;
         setState(() {});
       });
     }
-
-    double size_cm = 24.4;
 
     double getUS(double cm) {
       if (cm <= 23.5) return 6;
@@ -287,7 +308,7 @@ class _DisplaySizeScreenState extends State<DisplaySizeScreen> {
     }
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(title: Text('Calculated foot size')),
       body: Center(
         child: loading
             ? CircularProgressIndicator()
@@ -337,7 +358,7 @@ class _DisplaySizeScreenState extends State<DisplaySizeScreen> {
                       DataRow(
                         cells: <DataCell>[
                           DataCell(Text('cm')),
-                          DataCell(Text(size_cm.toString())),
+                          DataCell(Text(size_cm.toStringAsFixed(2).toString())),
                         ],
                       ),
                     ]),
