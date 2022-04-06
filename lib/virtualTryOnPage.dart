@@ -43,15 +43,18 @@ class _VirtualTryOnPageState extends State<VirtualTryOnPage> {
                 children: const <Widget>[
                   Text('Step 1:',
                       style: TextStyle(fontWeight: FontWeight.bold)),
-                  Text('lorem ipsum dolor sit amet, consectetur adipiscing'),
+                  Text(
+                      'Use the bottom list to navigate through the available shoe options.'),
                   SizedBox(height: 8.0),
                   Text('Step 2:',
                       style: TextStyle(fontWeight: FontWeight.bold)),
-                  Text('lorem ipsum dolor sit amet, consectetur adipiscing'),
+                  Text(
+                      'You can make use of the AR virtual try on feature by clicking on the "Try AR filter" button'),
                   SizedBox(height: 8.0),
                   Text('Step 3:',
                       style: TextStyle(fontWeight: FontWeight.bold)),
-                  Text('lorem ipsum dolor sit amet, consectetur adipiscing'),
+                  Text(
+                      'Once desired shoe is selected, you can proceed by clicking on the button on the app bar.'),
                 ],
               ),
             ),

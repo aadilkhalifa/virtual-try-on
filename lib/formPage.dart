@@ -1,4 +1,6 @@
+import 'package:dio/dio.dart' as dio;
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:virtual_try_on/thankYouPage.dart';
 
 class FormPage extends StatefulWidget {
@@ -13,6 +15,7 @@ class _FormPageState extends State<FormPage> {
   double sliderValue2 = 0;
   double sliderValue3 = 0;
   double sliderValue4 = 0;
+  TextEditingController feedback_controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -106,6 +109,7 @@ class _FormPageState extends State<FormPage> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextField(
+                        controller: feedback_controller,
                         maxLines: 5,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
@@ -120,7 +124,28 @@ class _FormPageState extends State<FormPage> {
             ),
             ElevatedButton(
                 child: Text('Submit response'),
-                onPressed: () {
+                onPressed: () async {
+                  // print('start');
+                  // print(sliderValue1);
+                  // print(sliderValue2);
+                  // print(sliderValue3);
+                  // print(sliderValue4);
+                  // print(feedback_controller.text);
+                  // print('end');
+
+                  Map<String, String> body = {
+                    'field1': sliderValue1.toString(),
+                    'field2': sliderValue2.toString(),
+                    'field3': sliderValue3.toString(),
+                    'field4': sliderValue4.toString(),
+                    'field5': feedback_controller.text,
+                  };
+
+                  Response r = await post(
+                    Uri.parse('http://aadilkhalifa.pythonanywhere.com/form'),
+                    body: body,
+                  );
+                  // return;
                   Route route = MaterialPageRoute(
                       builder: (context) => ThankYouPage(survey: false));
                   Navigator.pushReplacement(context, route);

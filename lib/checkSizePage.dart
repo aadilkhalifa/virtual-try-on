@@ -31,15 +31,22 @@ class CheckSizePage extends StatelessWidget {
                 children: const <Widget>[
                   Text('Step 1:',
                       style: TextStyle(fontWeight: FontWeight.bold)),
-                  Text('lorem ipsum dolor sit amet, consectetur adipiscing'),
+                  Text('Place an A4 size paper on the floor.'),
                   SizedBox(height: 8.0),
                   Text('Step 2:',
                       style: TextStyle(fontWeight: FontWeight.bold)),
-                  Text('lorem ipsum dolor sit amet, consectetur adipiscing'),
+                  Text(
+                      'Place your feet on the paper, with the bottom of your feet aligned with the bottom edge of the paper.'),
                   SizedBox(height: 8.0),
                   Text('Step 3:',
                       style: TextStyle(fontWeight: FontWeight.bold)),
-                  Text('lorem ipsum dolor sit amet, consectetur adipiscing'),
+                  Text(
+                      'Take a picture of the paper along with your feet. Repeat until satisfied.'),
+                  SizedBox(height: 8.0),
+                  Text('Step 4:',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text(
+                      'Click on the proceed icon to get your calculated shoe size.'),
                 ],
               ),
             ),
