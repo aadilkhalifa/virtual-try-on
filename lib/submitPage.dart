@@ -6,7 +6,12 @@ import 'package:virtual_try_on/thankYouPage.dart';
 
 class SubmitPage extends StatelessWidget {
   CameraController? controller;
-  SubmitPage({Key? key, required this.controller}) : super(key: key);
+  Future<void> initializeControllerFuture;
+  SubmitPage({
+    Key? key,
+    required this.controller,
+    required this.initializeControllerFuture,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +22,9 @@ class SubmitPage extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => CheckSizePage(controller: controller)),
+                  builder: (context) => CheckSizePage(
+                      controller: controller,
+                      initializeControllerFuture: initializeControllerFuture)),
             );
           },
           child: Text('Check size'),

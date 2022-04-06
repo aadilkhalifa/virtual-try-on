@@ -20,12 +20,14 @@ class CameraApp extends StatefulWidget {
 
 class _CameraAppState extends State<CameraApp> {
   CameraController? controller;
+  late Future<void> initializeControllerFuture;
 
   @override
   void initState() {
     super.initState();
     controller = CameraController(cameras![0], ResolutionPreset.max);
-    controller!.initialize().then((_) {
+    initializeControllerFuture = controller!.initialize();
+    initializeControllerFuture.then((_) {
       if (!mounted) {
         return;
       }
@@ -91,8 +93,10 @@ class _CameraAppState extends State<CameraApp> {
       initialRoute: '/home',
       routes: {
         // When navigating to the "/" route, build the FirstScreen widget.
-        '/home': (context) =>
-            MyHomePage(title: 'Virtual try on', controller: controller),
+        '/home': (context) => MyHomePage(
+            title: 'Virtual try on',
+            controller: controller,
+            initializeControllerFuture: initializeControllerFuture),
         // When navigating to the "/second" route, build the SecondScreen widget.
         // '/second': (context) => const SecondScreen(),
       },
@@ -101,19 +105,27 @@ class _CameraAppState extends State<CameraApp> {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title, required this.controller})
-      : super(key: key);
+  MyHomePage({
+    Key? key,
+    required this.title,
+    required this.controller,
+    required this.initializeControllerFuture,
+  }) : super(key: key);
 
   final String title;
   CameraController? controller;
+  Future<void> initializeControllerFuture;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState(controller);
+  State<MyHomePage> createState() =>
+      _MyHomePageState(controller, initializeControllerFuture);
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   CameraController? controller;
-  _MyHomePageState(CameraController? this.controller);
+  Future<void> initializeControllerFuture;
+  _MyHomePageState(CameraController? this.controller,
+      Future<void> this.initializeControllerFuture);
 
   @override
   Widget build(BuildContext context) {
@@ -171,8 +183,11 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) =>
-                                CheckSizePage(controller: controller)),
+                            builder: (context) => CheckSizePage(
+                                  controller: controller,
+                                  initializeControllerFuture:
+                                      initializeControllerFuture,
+                                )),
                       );
                     },
                     child: const Text("Check size"),
@@ -188,8 +203,11 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) =>
-                                VirtualTryOnPage(controller: controller)),
+                            builder: (context) => VirtualTryOnPage(
+                                  controller: controller,
+                                  initializeControllerFuture:
+                                      initializeControllerFuture,
+                                )),
                       );
                     },
                     child: const Text("Shop now"),

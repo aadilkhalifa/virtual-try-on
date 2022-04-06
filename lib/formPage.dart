@@ -36,6 +36,10 @@ class _FormPageState extends State<FormPage> {
                     SizedBox(height: 8.0),
                     Slider(
                       value: sliderValue1,
+                      min: 0,
+                      max: 10,
+                      divisions: 10,
+                      label: sliderValue1.toString(),
                       onChanged: (n) {
                         sliderValue1 = n;
                         setState(() {});
@@ -50,6 +54,10 @@ class _FormPageState extends State<FormPage> {
                     SizedBox(height: 8.0),
                     Slider(
                       value: sliderValue2,
+                      min: 0,
+                      max: 10,
+                      divisions: 10,
+                      label: sliderValue2.toString(),
                       onChanged: (n) {
                         sliderValue2 = n;
                         setState(() {});
@@ -63,6 +71,10 @@ class _FormPageState extends State<FormPage> {
                     SizedBox(height: 8.0),
                     Slider(
                       value: sliderValue3,
+                      min: 0,
+                      max: 10,
+                      divisions: 10,
+                      label: sliderValue3.toString(),
                       onChanged: (n) {
                         sliderValue3 = n;
                         setState(() {});
@@ -79,6 +91,10 @@ class _FormPageState extends State<FormPage> {
                     SizedBox(height: 8.0),
                     Slider(
                       value: sliderValue4,
+                      min: 0,
+                      max: 10,
+                      divisions: 10,
+                      label: sliderValue4.toString(),
                       onChanged: (n) {
                         sliderValue4 = n;
                         setState(() {});
