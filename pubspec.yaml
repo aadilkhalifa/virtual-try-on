@@ -30,7 +30,7 @@ dependencies:
   flutter:
     sdk: flutter
   camera: ^0.9.4+2
-  flutter_unity_widget: ^2020.3.25
+  # flutter_unity_widget: ^2020.3.25
 
 
   # The following adds the Cupertino Icons font to your application.

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:camera/camera.dart';
 import 'package:virtual_try_on/submitPage.dart';
-import 'package:flutter_unity_widget/flutter_unity_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'formPage.dart';
@@ -190,47 +189,6 @@ class _VirtualTryOnPageState extends State<VirtualTryOnPage> {
         ]),
       ),
     );
-  }
-}
-
-class UnityDemoScreen extends StatefulWidget {
-  UnityDemoScreen({Key? key}) : super(key: key);
-
-  @override
-  _UnityDemoScreenState createState() => _UnityDemoScreenState();
-}
-
-class _UnityDemoScreenState extends State<UnityDemoScreen> {
-  static final GlobalKey<ScaffoldState> _scaffoldKey =
-      GlobalKey<ScaffoldState>();
-  late UnityWidgetController _unityWidgetController;
-  bool shouldPop = true;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      key: _scaffoldKey,
-      body: SafeArea(
-        bottom: false,
-        child: WillPopScope(
-          onWillPop: () async {
-            return shouldPop;
-            // Pop the category page if Android back button is pressed.
-          },
-          child: Container(
-            color: Colors.amber,
-            child: UnityWidget(
-              onUnityCreated: onUnityCreated,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  // Callback that connects the created controller to the unity controller
-  void onUnityCreated(controller) {
-    this._unityWidgetController = controller;
   }
 }
 
