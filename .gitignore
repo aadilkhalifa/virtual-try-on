@@ -33,6 +33,9 @@
 /unity/
 /android/
 /ios/
+/server/myproject
+/server/output
+/server/images
 
 # Web related
 lib/generated_plugin_registrant.dart
