@@ -1,3 +1,5 @@
+<img src="https://github.com/aadilkhalifa/virtual-try-on/blob/main/screenshots/logo.jpg?raw=true" width="128"/>
+
 # AR Virtual Footwear Try-on
 
 An application that mimics a physical shopping experience for the users through the use of Augmented Reality and Computer Vision.
@@ -65,3 +67,9 @@ Run the Flask server
 flask run
 ```
 This should start the server at localhost.
+
+## Screenshots
+<img src="https://github.com/aadilkhalifa/virtual-try-on/blob/main/screenshots/ss1.jpeg?raw=true" width="256"/>
+<img src="https://github.com/aadilkhalifa/virtual-try-on/blob/main/screenshots/ss2.jpeg?raw=true" width="256"/>
+<img src="https://github.com/aadilkhalifa/virtual-try-on/blob/main/screenshots/ss3.jpeg?raw=true" width="256"/>
+<img src="https://github.com/aadilkhalifa/virtual-try-on/blob/main/screenshots/ss4.jpeg?raw=true" width="256"/>
