@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.virtual_try_on">
    <application
-        android:label="virtual_try_on"
+        android:label="Virtual Try-on"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
