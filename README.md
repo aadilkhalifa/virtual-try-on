@@ -73,3 +73,6 @@ This should start the server at localhost.
 <img src="https://github.com/aadilkhalifa/virtual-try-on/blob/main/screenshots/ss2.jpeg?raw=true" width="256"/>
 <img src="https://github.com/aadilkhalifa/virtual-try-on/blob/main/screenshots/ss3.jpeg?raw=true" width="256"/>
 <img src="https://github.com/aadilkhalifa/virtual-try-on/blob/main/screenshots/ss4.jpeg?raw=true" width="256"/>
+
+## References
+- https://github.com/wildoctopus/FeetAndShoeMeasurement
