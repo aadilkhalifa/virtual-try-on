@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:virtual_try_on/formPage.dart';
 
@@ -14,7 +16,7 @@ class _ThankYouPageState extends State<ThankYouPage> {
   Widget build(BuildContext context) {
     if (widget.survey) {
       return Scaffold(
-        appBar: AppBar(title: Text('Thank you')),
+        appBar: AppBar(title: const Text('Thank you')),
         body: Center(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -22,7 +24,7 @@ class _ThankYouPageState extends State<ThankYouPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Center(
+                const Center(
                   child: Text(
                     'Thank you for shopping with us.',
                     style: TextStyle(
@@ -31,25 +33,25 @@ class _ThankYouPageState extends State<ThankYouPage> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => FormPage()),
+                      MaterialPageRoute(builder: (context) => const FormPage()),
                     );
                   },
-                  child: Text('Take a survey'),
+                  child: const Text('Take a survey'),
                 ),
-                SizedBox(height: 8.0),
+                const SizedBox(height: 8.0),
                 OutlinedButton(
                   onPressed: () {
                     Navigator.of(context).pushNamedAndRemoveUntil(
                         '/home', (Route<dynamic> route) => false);
                   },
-                  child: Text('Back to home page'),
+                  child: const Text('Back to home page'),
                 )
               ],
             ),
@@ -58,7 +60,7 @@ class _ThankYouPageState extends State<ThankYouPage> {
       );
     } else {
       return Scaffold(
-        appBar: AppBar(title: Text('Thank you')),
+        appBar: AppBar(title: const Text('Thank you')),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Center(
@@ -66,7 +68,7 @@ class _ThankYouPageState extends State<ThankYouPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Center(
+                const Center(
                   child: Text(
                     'Thank you for taking the survey.',
                     style: TextStyle(
@@ -75,7 +77,7 @@ class _ThankYouPageState extends State<ThankYouPage> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 ElevatedButton(
@@ -83,7 +85,7 @@ class _ThankYouPageState extends State<ThankYouPage> {
                     Navigator.of(context).pushNamedAndRemoveUntil(
                         '/home', (Route<dynamic> route) => false);
                   },
-                  child: Text('Back to home page'),
+                  child: const Text('Back to home page'),
                 )
               ],
             ),

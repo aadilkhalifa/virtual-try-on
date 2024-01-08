@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart' as dio;
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:virtual_try_on/thankYouPage.dart';
@@ -21,7 +20,7 @@ class _FormPageState extends State<FormPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Survey'),
+        title: const Text('Survey'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -34,9 +33,9 @@ class _FormPageState extends State<FormPage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(height: 8.0),
-                    Text('How satisfied are you with the experience?'),
-                    SizedBox(height: 8.0),
+                    const SizedBox(height: 8.0),
+                    const Text('How satisfied are you with the experience?'),
+                    const SizedBox(height: 8.0),
                     Slider(
                       value: sliderValue1,
                       min: 0,
@@ -51,10 +50,10 @@ class _FormPageState extends State<FormPage> {
                       inactiveColor:
                           Theme.of(context).colorScheme.secondary.withAlpha(50),
                     ),
-                    SizedBox(height: 8.0),
-                    Text(
+                    const SizedBox(height: 8.0),
+                    const Text(
                         'How intutive was the experience for a first time user?'),
-                    SizedBox(height: 8.0),
+                    const SizedBox(height: 8.0),
                     Slider(
                       value: sliderValue2,
                       min: 0,
@@ -69,9 +68,9 @@ class _FormPageState extends State<FormPage> {
                       inactiveColor:
                           Theme.of(context).colorScheme.secondary.withAlpha(50),
                     ),
-                    SizedBox(height: 8.0),
-                    Text('How likely are you to recommend this to someone?'),
-                    SizedBox(height: 8.0),
+                    const SizedBox(height: 8.0),
+                    const Text('How likely are you to recommend this to someone?'),
+                    const SizedBox(height: 8.0),
                     Slider(
                       value: sliderValue3,
                       min: 0,
@@ -86,12 +85,12 @@ class _FormPageState extends State<FormPage> {
                       inactiveColor:
                           Theme.of(context).colorScheme.secondary.withAlpha(50),
                     ),
-                    SizedBox(height: 8.0),
-                    Text(
+                    const SizedBox(height: 8.0),
+                    const Text(
                       'How much do you prefer this over a traditional ecommerce experience?',
                       textAlign: TextAlign.center,
                     ),
-                    SizedBox(height: 8.0),
+                    const SizedBox(height: 8.0),
                     Slider(
                       value: sliderValue4,
                       min: 0,
@@ -111,7 +110,7 @@ class _FormPageState extends State<FormPage> {
                       child: TextField(
                         controller: feedback_controller,
                         maxLines: 5,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           hintText:
                               'Do you have any other feedback? Feel free to add that here.',
@@ -123,7 +122,7 @@ class _FormPageState extends State<FormPage> {
               ),
             ),
             ElevatedButton(
-                child: Text('Submit response'),
+                child: const Text('Submit response'),
                 onPressed: () async {
                   // print('start');
                   // print(sliderValue1);
@@ -147,7 +146,7 @@ class _FormPageState extends State<FormPage> {
                   );
                   // return;
                   Route route = MaterialPageRoute(
-                      builder: (context) => ThankYouPage(survey: false));
+                      builder: (context) => const ThankYouPage(survey: false));
                   Navigator.pushReplacement(context, route);
                 }),
           ],
