@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages, no_leading_underscores_for_local_identifiers, file_names, use_build_context_synchronously, avoid_print, no_logic_in_create_state
+
 import 'dart:io';
 import 'package:http/http.dart';
 import 'dart:convert';
@@ -8,6 +10,7 @@ import 'dart:async';
 import 'package:camera/camera.dart';
 import 'package:http_parser/http_parser.dart';
 
+// ignore: must_be_immutable
 class CheckSizePage extends StatelessWidget {
   CameraController? controller;
   Future<void> initializeControllerFuture;
@@ -26,9 +29,9 @@ class CheckSizePage extends StatelessWidget {
         builder: (BuildContext context) {
           return AlertDialog(
             title: const Text('Guide to using the module'),
-            content: SingleChildScrollView(
+            content: const SingleChildScrollView(
               child: ListBody(
-                children: const <Widget>[
+                children: <Widget>[
                   Text('Step 1:',
                       style: TextStyle(fontWeight: FontWeight.bold)),
                   Text('Place an A4 size paper on the floor.'),
@@ -65,20 +68,20 @@ class CheckSizePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Get your foot size'),
+        title: const Text('Get your foot size'),
         actions: [
           Center(
             child: TextButton(
-              child: Text(
+              onPressed: _showMyDialog,
+              child: const Text(
                 'Help',
                 style: TextStyle(
                   color: Colors.white,
                 ),
               ),
-              onPressed: _showMyDialog,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 20,
           )
         ],
@@ -140,7 +143,7 @@ class DisplayPictureScreen extends StatelessWidget {
       appBar: AppBar(title: const Text('Display the Picture')),
       // The image is stored as a file on the device. Use the `Image.file`
       // constructor with the given path to display the image.
-      body: Container(
+      body: SizedBox(
         height: double.infinity,
         child: Image.file(
           File(imagePath),
@@ -179,6 +182,7 @@ class DisplayPictureScreen extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class DisplaySizeScreen extends StatefulWidget {
   late String imagePath;
   DisplaySizeScreen({Key? key, required this.imagePath}) : super(key: key);
@@ -315,10 +319,10 @@ class _DisplaySizeScreenState extends State<DisplaySizeScreen> {
     }
 
     return Scaffold(
-      appBar: AppBar(title: Text('Calculated foot size')),
+      appBar: AppBar(title: const Text('Calculated foot size')),
       body: Center(
         child: loading
-            ? CircularProgressIndicator()
+            ? const CircularProgressIndicator()
             : Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -326,11 +330,11 @@ class _DisplaySizeScreenState extends State<DisplaySizeScreen> {
                   children: [
                     Text(
                       res,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    DataTable(columns: <DataColumn>[
+                    DataTable(columns: const <DataColumn>[
                       DataColumn(
                         label: Text(
                           'Unit',
@@ -346,32 +350,32 @@ class _DisplaySizeScreenState extends State<DisplaySizeScreen> {
                     ], rows: <DataRow>[
                       DataRow(
                         cells: <DataCell>[
-                          DataCell(Text('US')),
+                          const DataCell(Text('US')),
                           DataCell(Text(getUS(size_cm).toString())),
                         ],
                       ),
                       DataRow(
                         cells: <DataCell>[
-                          DataCell(Text('EURO')),
+                          const DataCell(Text('EURO')),
                           DataCell(Text(getEURO(size_cm).toString())),
                         ],
                       ),
                       DataRow(
                         cells: <DataCell>[
-                          DataCell(Text('UK')),
+                          const DataCell(Text('UK')),
                           DataCell(Text(getUK(size_cm).toString())),
                         ],
                       ),
                       DataRow(
                         cells: <DataCell>[
-                          DataCell(Text('cm')),
+                          const DataCell(Text('cm')),
                           DataCell(Text(size_cm.toStringAsFixed(2).toString())),
                         ],
                       ),
                     ]),
-                    SizedBox(height: 16.0),
+                    const SizedBox(height: 16.0),
                     ElevatedButton(
-                      child: Text(
+                      child: const Text(
                         'Done',
                       ),
                       onPressed: () {

@@ -1,10 +1,10 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:camera/camera.dart';
 import 'package:virtual_try_on/submitPage.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import 'formPage.dart';
 
 class VirtualTryOnPage extends StatefulWidget {
   CameraController? controller;
@@ -37,9 +37,9 @@ class _VirtualTryOnPageState extends State<VirtualTryOnPage> {
         builder: (BuildContext context) {
           return AlertDialog(
             title: const Text('Guide to using the module'),
-            content: SingleChildScrollView(
+            content: const SingleChildScrollView(
               child: ListBody(
-                children: const <Widget>[
+                children: <Widget>[
                   Text('Step 1:',
                       style: TextStyle(fontWeight: FontWeight.bold)),
                   Text(
@@ -72,22 +72,22 @@ class _VirtualTryOnPageState extends State<VirtualTryOnPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Virtual try on'),
+        title: const Text('Virtual try on'),
         actions: [
           Center(
             child: Row(
               children: [
                 TextButton(
-                  child: Text(
+                  onPressed: _showMyDialog,
+                  child: const Text(
                     'Help',
                     style: TextStyle(
                       color: Colors.white,
                     ),
                   ),
-                  onPressed: _showMyDialog,
                 ),
                 TextButton(
-                  child: Text(
+                  child: const Text(
                     'Proceed',
                     style: TextStyle(
                       color: Colors.white,
@@ -108,7 +108,7 @@ class _VirtualTryOnPageState extends State<VirtualTryOnPage> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 20,
           )
         ],
@@ -126,12 +126,10 @@ class _VirtualTryOnPageState extends State<VirtualTryOnPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Image(
-                    image: AssetImage(
-                        'assets/shoe' + (selected).toString() + '.png')),
-                SizedBox(height: 32.0),
+                Image(image: AssetImage('assets/shoe$selected.png')),
+                const SizedBox(height: 32.0),
                 OutlinedButton(
-                  child: Text('Try AR filter'),
+                  child: const Text('Try AR filter'),
                   onPressed: () {
                     _launchURL(snapchat_urls[selected - 1]);
                   },
@@ -141,7 +139,7 @@ class _VirtualTryOnPageState extends State<VirtualTryOnPage> {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: Container(
+            child: SizedBox(
               height: 120.0,
               // color: Colors.red,
               child: ListView(
@@ -168,15 +166,14 @@ class _VirtualTryOnPageState extends State<VirtualTryOnPage> {
                         // child: Center(child: Text("Shoe ${index + 1}")),
                         child: Center(
                             child: Image(
-                                image: AssetImage('assets/shoe' +
-                                    (index + 1).toString() +
-                                    '.png'))),
+                                image:
+                                    AssetImage('assets/shoe${index + 1}.png'))),
                       ),
                     ),
                   );
                   return Card(
                     // color: Colors.blue[index * 100],
-                    child: Container(
+                    child: SizedBox(
                       width: 100.0,
                       height: 100.0,
                       child: Center(child: Text("Shoe ${index + 1}")),
@@ -193,5 +190,5 @@ class _VirtualTryOnPageState extends State<VirtualTryOnPage> {
 }
 
 void _launchURL(_url) async {
-  if (!await launch(_url)) throw 'Could not launch $_url';
+  if (!await launchUrl(_url)) throw 'Could not launch $_url';
 }
